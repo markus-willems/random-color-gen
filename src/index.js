@@ -1,3 +1,4 @@
+// Converts a hexadecimal byte triplet to the decimal representation
 const hexToDec = (hex, ...args) => {
   if (args.length) {
     hex = [].concat(hex, ...args).join('');
@@ -17,6 +18,7 @@ const hexToDec = (hex, ...args) => {
   }
 };
 
+// Prepend a '0' if 'hexByte' is a single charactet (e.g. f, c, 3, ...)
 const validateHexByte = hexByte => {
   if (hexByte.length < 2) {
     return `0${hexByte}`;
@@ -24,6 +26,7 @@ const validateHexByte = hexByte => {
   return hexByte;
 };
 
+// Converts decimal triplet to the hexadecimal representation
 const decToHex = (dec, ...args) => {
   if (args.length) {
     dec = [].concat(dec, ...args);
