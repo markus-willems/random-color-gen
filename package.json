@@ -1,0 +1,24 @@
+{
+  "name": "random-color-gen",
+  "version": "0.0.1",
+  "description": "A random color generator for HEX, RGB, and HSL.",
+  "main": "lib/index.js",
+  "scripts": {
+    "clean": "rimraf lib",
+    "build": "npm run clean && npx babel ./src -d ./lib --ignore test.js",
+    "test": "jest",
+    "test:watch": "jest --watchAll"
+  },
+  "pre-commit": [
+    "test"
+  ],
+  "author": "Markus Willems",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "jest": "^22.4.2",
+    "pre-commit": "^1.2.2",
+    "rimraf": "^2.6.2"
+  }
+}
