@@ -10,7 +10,7 @@ $ npm install random-color-gen
 
 # Usage
 
-```
+```js
 import { hex, rgb, hexToDec, decToHex } from 'random-color-gen';
 
 let hexColor = hex(); // '#4be1ce'
