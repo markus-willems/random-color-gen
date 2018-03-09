@@ -8,11 +8,12 @@
     "clean": "rimraf lib",
     "build": "npm run clean && rollup -c",
     "test": "jest",
-    "test:watch": "jest --watchAll"
+    "test:watch": "jest --watchAll",
+    "prepublishOnly": "npm run test && npm run build"
   },
   "pre-commit": ["test"],
   "files": ["lib"],
-  "author": "Markus Willems",
+  "author": "Markus Willems <mail@markus-willems.de>",
   "license": "MIT",
   "devDependencies": {
     "babel-cli": "^6.26.0",
