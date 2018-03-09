@@ -1,8 +1,7 @@
 {
   "name": "random-color-gen",
-  "version": "0.0.1",
-  "description":
-    "A random color generator that creates colors in the hexadecimal format and RGB mode.",
+  "version": "1.0.0",
+  "description": "A random color generator that creates colors in the hexadecimal format and RGB mode.",
   "main": "lib/index.js",
   "scripts": {
     "clean": "rimraf lib",
@@ -11,8 +10,12 @@
     "test:watch": "jest --watchAll",
     "prepublishOnly": "npm run test && npm run build"
   },
-  "pre-commit": ["test"],
-  "files": ["lib"],
+  "pre-commit": [
+    "test"
+  ],
+  "files": [
+    "lib"
+  ],
   "author": "Markus Willems <mail@markus-willems.de>",
   "license": "MIT",
   "devDependencies": {
