@@ -1,6 +1,6 @@
 {
   "name": "random-color-gen",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A random color generator that creates colors in the hexadecimal format and RGB mode.",
   "main": "lib/index.js",
   "scripts": {
