@@ -1,10 +1,13 @@
-// Converts a hexadecimal byte triplet to the decimal representation
+// Converts a 3-byte hexadecimal to the decimal representation
 const hexToDec = (hex, ...args) => {
   if (args.length) {
     hex = [].concat(hex, ...args).join('');
   }
   if (Array.isArray(hex)) {
     hex = hex.reduce((a, b) => a + b);
+  }
+  if (hex.startsWith('#')) {
+    hex = hex.substr(1, hex.length);
   }
   if (hex.length === 3) {
     return hex
@@ -18,7 +21,7 @@ const hexToDec = (hex, ...args) => {
   }
 };
 
-// Prepend a '0' if 'hexByte' is a single charactet (e.g. f, c, 3, ...)
+// Prepend a '0' if 'hexByte' is a single character (e.g. f, c, 3, ...)
 const validateHexByte = hexByte => {
   if (hexByte.length < 2) {
     return `0${hexByte}`;
@@ -32,18 +35,30 @@ const decToHex = (dec, ...args) => {
     dec = [].concat(dec, ...args);
   }
   if (Array.isArray(dec) && dec.length) {
-    return dec
-      .map(
-        d => (Number(d) < 256 ? validateHexByte(Math.abs(d).toString(16)) : 0),
-      )
-      .reduce((a, b) => a + b);
+    return (
+      '#' +
+      dec
+        .map(
+          d =>
+            Number(d) < 256 ? validateHexByte(Math.abs(d).toString(16)) : 0,
+        )
+        .reduce((a, b) => a + b)
+    );
   } else {
     return dec;
   }
 };
 
-const hex = () => {};
-const rgb = () => {};
-const hsl = () => {};
+// Generates a random 3-byte hexadecimal
+const hex = () => {
+  return `#${[...Array(3)]
+    .map(i => validateHexByte(Math.floor(Math.random() * 256).toString(16)))
+    .reduce((a, b) => a + b)}`;
+};
 
-export { hex, rgb, hsl, decToHex, hexToDec };
+// Generates a random rgb combo (array)
+const rgb = () => {
+  return [...Array(3)].map(i => Math.floor(Math.random() * 256));
+};
+
+export { hex, rgb, decToHex, hexToDec };
