@@ -1,7 +1,6 @@
-import { hexToDec, decToHex, hex, rgb } from '../';
+import { hexToDec, decToHex, hex, rgb, hsl } from '../';
 
 // Test suite for hexToDec() and decToHex()
-
 describe('converter suite', () => {
   it('should convert hex to dec', () => {
     expect(hexToDec('#437f0c').join('')).toBe([67, 127, 12].join(''));
@@ -13,7 +12,6 @@ describe('converter suite', () => {
 });
 
 // Test suite for hex()
-
 describe('hex triplet generator suite', () => {
   it('should return a string', () => {
     expect(typeof hex()).toBe('string');
@@ -28,7 +26,6 @@ describe('hex triplet generator suite', () => {
 });
 
 // Test suite for rgb()
-
 describe('rgb generator suite', () => {
   it('should return an array', () => {
     expect(Array.isArray(rgb())).toBe(true);
@@ -39,5 +36,19 @@ describe('rgb generator suite', () => {
     let rgb2 = rgb();
 
     expect(rgb1.join('')).not.toBe(rgb2.join(''));
+  });
+});
+
+// Test suite for hsl()
+describe('hsl generator suite', () => {
+  it('should return an array', () => {
+    expect(Array.isArray(hsl())).toBe(true);
+  });
+
+  it('should generate a random hsl array', () => {
+    let hsl1 = hsl();
+    let hsl2 = hsl();
+
+    expect(hsl1.join('')).not.toBe(hsl2.join(''));
   });
 });

@@ -49,16 +49,26 @@ const decToHex = (dec, ...args) => {
   }
 };
 
-// Generates a random 3-byte hexadecimal
+// Generates a random 3-byte hexadecimal (string)
 const hex = () => {
   return `#${[...Array(3)]
-    .map(i => validateHexByte(Math.floor(Math.random() * 256).toString(16)))
+    .map(_ => validateHexByte(Math.floor(Math.random() * 256).toString(16)))
     .reduce((a, b) => a + b)}`;
 };
 
 // Generates a random rgb combo (array)
 const rgb = () => {
-  return [...Array(3)].map(i => Math.floor(Math.random() * 256));
+  return [...Array(3)].map(_ => Math.floor(Math.random() * 256));
 };
 
-export { hex, rgb, decToHex, hexToDec };
+// Generates a random hsl combo (array)
+const hsl = () => {
+  return [...Array(3)].map(
+    (_, i) =>
+      !i
+        ? Math.floor(Math.random() * 361)
+        : `${Math.floor(Math.random() * 101)}%`,
+  );
+};
+
+export { hex, rgb, hsl, decToHex, hexToDec };
