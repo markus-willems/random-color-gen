@@ -1,13 +1,39 @@
-import { hexToDec, decToHex, hex, rgb, hsl } from '../';
+import {
+  hexToRgb,
+  rgbToHex,
+  rgbToHsl,
+  hslToRgb,
+  hexToHsl,
+  hslToHex,
+  hex,
+  rgb,
+  hsl,
+} from '../';
 
-// Test suite for hexToDec() and decToHex()
+// Test suite for hexToRgb(), rgbToHex(), rgbToHsl(), hslToRgb(), hexToHsl(), and hslToHex()
 describe('converter suite', () => {
   it('should convert hex to dec', () => {
-    expect(hexToDec('#437f0c').join('')).toBe([67, 127, 12].join(''));
+    expect(hexToRgb('#437f0c')).toEqual([67, 127, 12]);
   });
 
   it('should convert dec to hex', () => {
-    expect(decToHex(67, 127, 12)).toBe('#437f0c');
+    expect(rgbToHex(67, 127, 12)).toEqual('#437f0c');
+  });
+
+  it('should convert rgb to hsl', () => {
+    expect(rgbToHsl([45, 221, 22])).toEqual([113, '82%', '48%']);
+  });
+
+  it('should convert hsl to rgb', () => {
+    expect(hslToRgb([123, '75%', '34%'])).toEqual([22, 152, 28]);
+  });
+
+  it('should convert hex to hsl', () => {
+    expect(hexToHsl('#4f69bc')).toEqual([226, '45%', '52%']);
+  });
+
+  it('should convert hsl to hex', () => {
+    expect(hslToHex([53, '49%', '57%'])).toEqual('#c7bb5c');
   });
 });
 
@@ -49,6 +75,6 @@ describe('hsl generator suite', () => {
     let hsl1 = hsl();
     let hsl2 = hsl();
 
-    expect(hsl1.join('')).not.toBe(hsl2.join(''));
+    expect(hsl1).not.toEqual(hsl2);
   });
 });
