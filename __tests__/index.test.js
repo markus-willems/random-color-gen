@@ -8,7 +8,7 @@ import {
   hex,
   rgb,
   hsl,
-} from '../';
+} from '../src/';
 
 // Test suite for hexToRgb(), rgbToHex(), rgbToHsl(), hslToRgb(), hexToHsl(), and hslToHex()
 describe('converter suite', () => {
